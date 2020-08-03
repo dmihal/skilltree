@@ -11,7 +11,7 @@
     "@types/react-router-dom": "^4.3.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "^3.2.0",
+    "react-scripts": "3.4.0",
     "skilltree-plugin": "^1.0.0",
     "skilltree-ui": "^1.0.0"
   },

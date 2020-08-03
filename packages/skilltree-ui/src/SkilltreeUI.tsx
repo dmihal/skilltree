@@ -19,7 +19,7 @@ import ReceivePage from './pages/ReceivePage';
 import SendPage from './pages/SendPage';
 
 
-export default class ModernUI extends BurnerUICore {
+export default class SkilltreeUI extends BurnerUICore {
   constructor(props: any) {
     super(props);
 

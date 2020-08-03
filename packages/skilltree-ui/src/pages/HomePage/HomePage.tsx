@@ -1,87 +1,48 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { BurnerContext, withBurner, DataProviders } from '@burner-wallet/ui-core';
+import { useBurner, DataProviders } from '@burner-wallet/ui-core';
 import styled from 'styled-components';
 
 import Page from '../../components/Page';
-import HistoryList from '../../components/HistoryList';
-import AppButton from './AppButton';
-import BottomActions from './BottomActions';
-import HomeTabs from './HomeTabs';
+import { SCAN_QR_DATAURI } from '../../lib';
 
-const PageContainer = styled(Page)`
-  margin-bottom: 100px;
-`;
 
 const BottomActionsContainer = styled.div`
   position: fixed;
   bottom: 32px;
-  left: 0;
-  right: 0;
+  right: 32px;
 `;
 
-const ViewAllButton = styled(Link)`
-  background: #f2f2f2;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  color: #555;
-  padding: 8px 12px;
-  text-decoration: none;
+const ScanButton = styled.button`
+  height: 72px;
+  width: 72px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+  outline: none;
+  margin: -12px 0;
 
-  &:after {
-    content: '\\203A';
-    margin-left: 10px;
-  }
-`;
-
-const ActivityHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 8px 0 4px;
-`;
-
-const SubHeading = styled.h2<{ line?: boolean }>`
-  font-size: var(--l2-fs);
-  line-height: var(--l2-lh);
-  font-weight: var(--l2-weight);
-  margin: 8px 0 4px;
-  color: #222222;
-
-  ${props => props.line && `border-bottom: solid 1px #f2f2f2;`}
+  background-image: url("${SCAN_QR_DATAURI}");
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
 const { PluginElements, PluginButtons } = DataProviders;
 
-const HomePage: React.FC<BurnerContext> = ({ defaultAccount, actions, pluginData, t }) => {
+const HomePage: React.FC = () => {
+  const { defaultAccount, actions, pluginData, t } = useBurner();
+
   return (
-    <PageContainer>
+    <Page>
       <PluginElements position='home-top' />
-
-      <HomeTabs pluginData={pluginData} />
-
       <PluginElements position='home-middle' />
 
-      <ActivityHeader>
-        <SubHeading>{t('Recent activity')}</SubHeading>
-        <ViewAllButton to='/activity'>{t('View all')}</ViewAllButton>
-      </ActivityHeader>
-
-      <HistoryList account={defaultAccount} limit={3} navigateTo={actions.navigateTo} />
-
-
-      <PluginButtons position="apps" component={AppButton}>
-        <SubHeading line>{t('Apps')}</SubHeading>
-      </PluginButtons>
-
-      <AppButton title={t('Settings')} to="/advanced" />
-
       <BottomActionsContainer>
-        <BottomActions actions={actions} />
+        <ScanButton onClick={actions.openDefaultQRScanner} />
       </BottomActionsContainer>
-    </PageContainer>
+    </Page>
   );
 };
 
-export default withBurner(HomePage);
+export default HomePage;
