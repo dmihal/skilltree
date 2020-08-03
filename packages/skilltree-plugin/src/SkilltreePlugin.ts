@@ -6,7 +6,7 @@ interface PluginActionContext {
   actions: Actions;
 }
 
-export default class MyPlugin implements Plugin {
+export default class SkilltreePlugin implements Plugin {
   private pluginContext?: BurnerPluginContext;
 
   initializePlugin(pluginContext: BurnerPluginContext) {

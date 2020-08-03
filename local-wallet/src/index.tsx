@@ -4,8 +4,8 @@ import { NativeAsset, ERC20Asset } from '@burner-wallet/assets';
 import BurnerCore from '@burner-wallet/core';
 import { InjectedSigner, LocalSigner } from '@burner-wallet/core/signers';
 import { HTTPGateway } from '@burner-wallet/core/gateways';
-import ModernUI from '@burner-wallet/modern-ui';
-import MyPlugin from 'my-plugin';
+import StilltreeUI from 'skilltree-ui';
+import SkilltreePlugin from 'skilltree-plugin';
 
 const core = new BurnerCore({
   signers: [
@@ -32,10 +32,10 @@ const core = new BurnerCore({
 });
 
 const BurnerWallet = () =>
-  <ModernUI
+  <StilltreeUI
     title="Local Wallet"
     core={core}
-    plugins={[new MyPlugin()]}
+    plugins={[new SkilltreePlugin()]}
   />
 
 

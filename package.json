@@ -24,6 +24,9 @@
     "lerna": "^3.16.4"
   },
   "dependencies": {
-    "typescript": "^3.6.3"
+    "typescript": "3.7.5"
+  },
+  "resolutions": {
+    "web3": "1.2.11"
   }
 }

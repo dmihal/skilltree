@@ -1,9 +1,9 @@
 {
-  "name": "my-plugin",
+  "name": "skilltree-plugin",
   "version": "1.0.0",
   "license": "MIT",
-  "main": "dist/MyPlugin.js",
-  "types": "dist/MyPlugin.d.ts",
+  "main": "dist/SkilltreePlugin.js",
+  "types": "dist/SkilltreePlugin.d.ts",
   "scripts": {
     "build": "tsc",
     "start-basic": "tsc -w",
@@ -13,8 +13,5 @@
     "@burner-wallet/assets": "^1.0.0",
     "@burner-wallet/types": "^1.0.0",
     "@types/react": "*"
-  },
-  "devDependencies": {
-    "typescript": "^3.5.2"
   }
 }
