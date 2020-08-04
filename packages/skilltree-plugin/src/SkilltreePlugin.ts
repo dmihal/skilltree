@@ -1,4 +1,5 @@
 import { BurnerPluginContext, Plugin, Actions } from '@burner-wallet/types';
+import ClaimPage from './ui/ClaimPage';
 import NFTPage from './ui/NFTPage';
 import NFTList from './ui/NFTList';
 import certificate1 from '../images/certificate1.png';
@@ -61,6 +62,8 @@ const mockNFTs: NFT[] = [
   },
 ];
 
+const wait = (time: number) => new Promise((resolve) => setTimeout(resolve, time));
+
 interface PluginActionContext {
   actions: Actions;
 }
@@ -71,12 +74,13 @@ export default class SkilltreePlugin implements Plugin {
   initializePlugin(pluginContext: BurnerPluginContext) {
     this.pluginContext = pluginContext;
 
+    pluginContext.addPage('/claim/:id', ClaimPage);
     pluginContext.addPage('/card/:id', NFTPage);
     pluginContext.addElement('home-middle', NFTList);
 
     pluginContext.onQRScanned((scannedQR: string, ctx: PluginActionContext) => {
-      if (scannedQR === 'My Plugin') {
-        ctx.actions.navigateTo('/my-page');
+      if (scannedQR.indexOf('/claim/') === 0) {
+        ctx.actions.navigateTo(scannedQR);
         return true;
       }
     });
@@ -93,5 +97,10 @@ export default class SkilltreePlugin implements Plugin {
       }
     }
     return null;
+  }
+
+  async claimNFT(id: string): Promise<string | null> {
+    await wait(1500);
+    return id;
   }
 }
