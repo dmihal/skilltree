@@ -1,16 +1,14 @@
-# Advanced Burner Wallet 2 Project
+# Skilltree Burner Wallet
 
-This repo provides a boilerplate for building a project using the Burner Wallet 2.
+## Usage
 
-Work in progress!
+Install the package by cloning the repo and running `yarn install` in the project root.
 
-## Setup
+Start the wallet connected to a local Ganace instance by running `yarn start-local`, or
+start connected to xDai by running `yarn start-basic`.
 
-1. Clone the repo
-2. Run `yarn install`. This repo uses Lerna and Yarn Workspaces, so `yarn install` will install
-  all dependencies and link modules in the repo
-3. To connect to mainnet & most testnets, you'll need to provide an Infura key. Create a file
-  named `.env` in the `basic-wallet` folder and set the contents to `REACT_APP_INFURA_KEY=<your key from infura.com>`
-4. Run `yarn start-local` to start the wallet while connected to Ganache, or run `yarn start-basic`
-  to start the wallet connected to Mainnet & xDai
+## Packages
 
+* `skilltree-plugin`: Burner Wallet plugin that contains the majority of the application logic
+* `skilltree-ui`: Fork of @burner-wallet/modern-ui. Basic UI theme, used for design customization
+* `basic-wallet` & `local-wallet`: React apps for building & running the wallet
